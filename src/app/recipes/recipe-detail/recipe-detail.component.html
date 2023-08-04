@@ -1,13 +1,13 @@
 <div class="row">
     <div class="col-xs-12">
-        <img src="" alt="" class="img-fluid">
+        <img src="{{recipe.imagePath}}" alt="" class="img-fluid" style="width: 200px;">
     </div>
 </div>
 
 <div class="row">
     <div class="col-xs-12">
         <h1>
-            Recipe Name
+            {{recipe.name}}
         </h1>
     </div>
 </div>
@@ -19,9 +19,9 @@
               Manage
             </button>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Add to Shopping List</a></li>
-              <li><a class="dropdown-item" href="#">Edit Recipe</a></li>
-              <li><a class="dropdown-item" href="#">Delete Recipe</a></li>
+              <li><a class="dropdown-item" (click)="onAddToShoppingList()">Add to Shopping List</a></li>
+              <li><a class="dropdown-item" (click)="onEdit()">Edit Recipe</a></li>
+              <li><a class="dropdown-item">Delete Recipe</a></li>
             </ul>
           </div>
     </div>
@@ -29,11 +29,16 @@
 
 <div class="row">
     <div class="col-xs-12">
-        Description
+        {{recipe.description}}
     </div>
 </div>
 <div class="row">
     <div class="col-xs-12">
-        Ingredients
+        <div class="list-group">
+            <div *ngFor="let ingredients of recipe.ingredients" class="list-group-item d-flex justify-content-between">
+              <span>{{ ingredients.name }}</span>
+              <span>{{ingredients.amount}}</span>
+            </div>
+          </div>
     </div>
 </div>

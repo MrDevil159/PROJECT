@@ -1,1 +1,14 @@
-<p>recipe-item works!</p>
+<a class="list-group-item list-group-item-action border-2 d-flex justify-content-between align-items-center" routerLinkActive="active" [routerLink]="[index]">
+    <div >
+        <h4 class="list-group-item-heading fw-bold">
+            {{ recipe.name }}
+        </h4>
+        <p class="list-group-item-text">
+            {{ recipe.description }}
+        </p>
+        
+    </div>
+    <span class="p-2">
+        <img src="{{ recipe.imagePath }}" alt="{{ recipe.name }}" class="img-fluid" style="max-height: 50px;">
+    </span>
+</a>

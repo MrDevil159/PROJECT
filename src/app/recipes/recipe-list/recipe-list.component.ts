@@ -1,17 +1,24 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output,Input, OnInit } from '@angular/core';
 import { Recipe } from '../recipe.model';
+import { RecipeService } from '../recipe.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-recipe-list',
   templateUrl: './recipe-list.component.html',
   styleUrls: ['./recipe-list.component.scss']
 })
-export class RecipeListComponent {
+export class RecipeListComponent implements OnInit {
+recipes: Recipe[] = [];
+constructor(private recipeServices:RecipeService,
+  private router:Router,
+  private route: ActivatedRoute) {}
+ngOnInit() {
+  this.recipes = this.recipeServices.getRecipe();
+}
 
-recipes: Recipe[] = [
-  new Recipe('A Test Recipe', 'A Test Recipe Description','https://img.freepik.com/free-photo/double-hamburger-isolated-white-background-fresh-burger-fast-food-with-beef-cream-cheese_90220-1192.jpg?w=2000'),
-  new Recipe('A Test Recipe', 'A Test Recipe Description','https://img.freepik.com/free-photo/double-hamburger-isolated-white-background-fresh-burger-fast-food-with-beef-cream-cheese_90220-1192.jpg?w=2000'),
-
-];
+onNewRecipe() {
+  this.router.navigate(['new'], {relativeTo: this.route})
+}
 
 }
