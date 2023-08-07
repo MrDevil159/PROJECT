@@ -6,6 +6,7 @@ import { Subject } from 'rxjs';
 @Injectable()
 
 export class RecipeService {
+    recipesChanged = new Subject<Recipe[]>();
     // recipeSelected = new Subject<Recipe>();
     private recipes: Recipe[] = [
         new Recipe('Burger 1', 'Bigg Burger','https://img.freepik.com/free-photo/double-hamburger-isolated-white-background-fresh-burger-fast-food-with-beef-cream-cheese_90220-1192.jpg?w=2000',[
@@ -33,5 +34,17 @@ export class RecipeService {
     }
     addIngredientsToShoppingList(ingredients: Ingredient[]) {
         this.slService.addIngredients(ingredients);
+    }
+    addRecipe(recipe: Recipe) {
+        this.recipes.push(recipe);
+        this.recipesChanged.next(this.recipes.slice());
+    }
+    updateRecipe(index: number, recipe:Recipe) {
+        this.recipes[index]= recipe;
+        this.recipesChanged.next(this.recipes.slice());
+    }
+    deleteRecipe(index: number) {
+        this.recipes.splice(index, 1);
+        this.recipesChanged.next(this.recipes.slice());
     }
 }
