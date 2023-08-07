@@ -1,5 +1,5 @@
-<a class="list-group-item list-group-item-action border-2 d-flex justify-content-between align-items-center" routerLinkActive="active" [routerLink]="[index]">
-    <div >
+<a [routerLink]="[index]">
+    <!-- <div >
         <h4 class="list-group-item-heading fw-bold">
             {{ recipe.name }}
         </h4>
@@ -10,5 +10,25 @@
     </div>
     <span class="p-2">
         <img src="{{ recipe.imagePath }}" alt="{{ recipe.name }}" class="img-fluid" style="max-height: 50px;">
-    </span>
+    </span> -->
+    <div class="card mb-3" routerLinkActive="text-dark bg-light" style="
+    max-height: 100px; overflow: hidden; 
+">
+        <div class="row g-0">
+          <div class="col-md-4" style="    align-items: center;
+          justify-content: center;
+          display: flex; height: 100px;">
+            <img src="{{ recipe.imagePath }}" style="  max-width: 100%;
+            height: auto;" class="img-fluid rounded-start" alt="{{ recipe.name }}">
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title">{{ recipe.name }}</h5>
+              <p class="card-text">{{ recipe.description }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
 </a>
+
+

@@ -15,7 +15,7 @@ export class RecipeService {
             new Ingredient('Tomato',1),
             new Ingredient('Onion',1),
         ]),
-        new Recipe('Pizza', 'A Test Recipe Pizza','https://t3.gstatic.com/licensed-image?q=tbn:ANd9GcQcHbxCjB7FY6Rttw1VZFdh0gIZmm4MLLjfmD0dhA11saxBKG_D49VVkmlvz3sE71-b',[
+        new Recipe('Pizza', 'A Test Recipe Pizza','https://www.allrecipes.com/thmb/iXKYAl17eIEnvhLtb4WxM7wKqTc=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/240376-homemade-pepperoni-pizza-Beauty-3x4-1-6ae54059c23348b3b9a703b6a3067a44.jpg',[
             new Ingredient('Pizza Base', 1),
             new Ingredient('Tomato', 1),
             new Ingredient('Cheese', 1),
