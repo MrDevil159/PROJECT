@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Recipe } from '../recipes/recipe.model';
 import { RecipeService } from '../recipes/recipe.service';
 
-import { map } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 
 @Injectable({ providedIn: 'root' })
 export class DataStorageService {
@@ -22,7 +22,7 @@ export class DataStorageService {
       });
   }
   fetchRecipe() {
-    this.http
+    return this.http
       .get<Recipe[]>(
         'https://recipe-capstone-linkzy-default-rtdb.asia-southeast1.firebasedatabase.app/recipes.json'
       )
@@ -34,14 +34,10 @@ export class DataStorageService {
               ingredients: recipe.ingredients ? recipe.ingredients : [],
             };
           });
-        })
-      )
-      .subscribe({
-        next: (res) => {
-          console.log(res);
+        }),
+        tap(res => {
           this.recipeService.setRecipes(res);
-        },
-        error: (err) => console.log(err),
-      });
+        })
+      );
   }
 }
