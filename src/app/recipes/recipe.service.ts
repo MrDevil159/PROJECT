@@ -9,23 +9,13 @@ export class RecipeService {
     recipesChanged = new Subject<Recipe[]>();
     // recipeSelected = new Subject<Recipe>();
     private recipes: Recipe[] = [
-        new Recipe('Burger 1', 'Bigg Burger','https://img.freepik.com/free-photo/double-hamburger-isolated-white-background-fresh-burger-fast-food-with-beef-cream-cheese_90220-1192.jpg?w=2000',[
-            new Ingredient('Bun',2),
-            new Ingredient('Patty',2),
-            new Ingredient('Cheese',1),
-            new Ingredient('Tomato',1),
-            new Ingredient('Onion',1),
-        ]),
-        new Recipe('Pizza', 'A Test Recipe Pizza','https://www.allrecipes.com/thmb/iXKYAl17eIEnvhLtb4WxM7wKqTc=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/240376-homemade-pepperoni-pizza-Beauty-3x4-1-6ae54059c23348b3b9a703b6a3067a44.jpg',[
-            new Ingredient('Pizza Base', 1),
-            new Ingredient('Tomato', 1),
-            new Ingredient('Cheese', 1),
-            new Ingredient('Onion', 1),
-            new Ingredient('Pepperoni', 1),
-
-        ]),
       ]; 
       constructor( private slService: ShoppingListService) {}
+
+    setRecipes(recipes: Recipe[]) {
+        this.recipes = recipes;
+        this.recipesChanged.next(recipes);
+    }
     getRecipe() {
         return this.recipes.slice();
     }
